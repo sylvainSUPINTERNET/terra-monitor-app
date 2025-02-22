@@ -4,6 +4,8 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { Text } from "react-native";
+import "../../global.css"
 
 export default function HomeScreen() {
   return (
@@ -16,6 +18,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
+        <Text className='text-4xl text-red-600'>XD 🚀</Text>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
