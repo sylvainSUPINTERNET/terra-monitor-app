@@ -1,32 +1,48 @@
-import { Image, StyleSheet, Platform, Text, View, SafeAreaView, StatusBar} from 'react-native';
+import { Image, StyleSheet, Platform, Text, View, SafeAreaView, StatusBar, PermissionsAndroid} from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import LineChart from '@/components/Lin';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 import Svg, { Path } from "react-native-svg";
 import * as d3 from "d3-shape";
 import "../../global.css"
+import React, { useEffect, useState } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const DATA = Array.from({ length: 31 }, (_, i) => ({
-  day: i,
-  highTmp: 40 + 30 * Math.random(),
-}));
+
 
 export default function HomeScreen() {
+
+  let [perms, setPerms] = useState<boolean>(false);
+
+  useEffect( () => {
+
+    const requestCameraPermission = async () => {
+    };
+
+    requestCameraPermission();
+  }, [])
+
   return (
     <>
-        <StatusBar/>
-        <SafeAreaView style={{
-          paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-        }}>
-          <View className='mt-5'>
-
-            <LineChart></LineChart>
+      <StatusBar/>
+      <SafeAreaView style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0}}>
+        <SafeAreaProvider>
+          <View className='mt-5  bg-white h-screen'>
+            <View>
+              <Text>Emerdant
+                { perms ? "✅" : "❌" }
+              </Text>
+              <Icon name="rocket" size={30} color="#900" />
+            </View>
           </View>
-        </SafeAreaView>
+        </SafeAreaProvider>
+      </SafeAreaView>
     </>
 
     // <ParallaxScrollView
